@@ -47,7 +47,7 @@ nav ul{
 }
 
 body > header nav a{
-	color: #747474;
+	color: #acacac;
 	text-decoration: none;
 	padding: 0 0 21px 0;
 }
@@ -59,8 +59,8 @@ body > header nav a:hover{
 }
 
 body > header nav a.active{
-	color: #6fa8dc;
-	border-bottom: 3px solid #6fa8dc;
+	color: #05447e;
+	border-bottom: 3px solid #05447e;
 }
 
 body > main{
@@ -113,3 +113,135 @@ input[type=submit]:hover, input[type=reset]:hover{
 input[type=submit]:active, input[type=reset]:active{
 	background: #6fa8dc;
 }
+
+button {
+	background: #FFF;
+	color: #000;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.modal {
+	position: absolute;
+	background: #000000e1;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal main{
+	width: 300px;
+	background: #141414;
+	border-radius: 15px;
+	padding: 20px;
+	color: #ffffff;
+}
+
+.modal main h2{
+	margin: 0;
+}
+
+.modal main form{
+	margin: 20px 0 0 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal main form button{
+	margin: 20px 0 0 0;
+}
+
+.card-song{
+	width: 230px;
+	position: relative;
+	/* height: fit-content; */
+	background: #0a0a0a;
+	border-radius: 20px;
+	padding: 16px;
+	align-self: baseline;
+}
+
+.card-menu{
+	display: none;
+	position: absolute;
+	background: #000000bd;
+	backdrop-filter: blur(10px);
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	border-radius: 20px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px
+}
+
+.card-song header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card-song header h2{
+	margin: 0;
+	font-size: 12px;
+}
+
+.card-song header h2 span{
+	font-weight: normal;
+	color: #7b7b7b;
+}
+
+.card-song header h1{
+	margin: 0;
+	font-size: 14px;
+	font-weight: 500;
+} 
+
+.card-song main p{
+	font-size: 32px;
+	margin: 16px 0 2px 0;
+} 
+
+/*
+
+.card-song main span{
+	color: #7b7b7b;
+}
+
+.card-song main span:nth-child(2){
+	background: #02bb2a;
+	padding: 3px 16px;
+	margin: 0 8px 0 0;
+	border-radius: 12px;
+	font-size: 14px;
+	color: #FFF;
+}
+
+.card-song footer{
+	display: flex;
+	justify-content: space-between;
+	margin: 26px 0 0 0;
+}
+
+.card-song footer div:nth-child(2){
+	text-align: right;
+}
+
+.card-song footer div p{
+	margin: 0;
+	font-size: 18px;
+}
+
+.card-song footer div span{
+	font-size: 14px;
+	color: #7b7b7b;
+}
+
+*/
