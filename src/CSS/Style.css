@@ -1,0 +1,15 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    background: #235083;
+    color: #000;
+}
+
+body > footer{
+	background: #000000;
+	color: #ffffff;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
