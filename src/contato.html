@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF Music</title>
+    <link rel="stylesheet" href="./CSS/Style.css">
+</head>
+<body>
+    <header>
+        <div class="logotipo">
+            <img src="./img/logo.svg" alt="logotipo">
+            <h1><span>IF</span> Music</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./contato.html" class="active">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Contato</h1>
+        <form action="exemplo-server.php" method="post">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+				<label for="nome">Nome:</label>
+				<input type="text" name="nome" id="nome">
+                <label for="sobrenome">Sobrenome:</label>
+				<input type="text" name="sobrenome" id="sobrenome">
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email">
+                <br><br>
+			    <label for="comentario">Comentário:</label><br>
+			    <textarea name="comentario" id="comentario" rows="8" cols="50"></textarea><br>
+			    <input type="submit" value="Enviar">
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <p>Copyright 2024 © Rodrigo Costa</p>
+    </footer>
+</body>

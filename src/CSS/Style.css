@@ -1,15 +1,115 @@
 html, body{
     margin: 0;
     padding: 0;
-    background: #235083;
+    background: #fdfdfd;
     color: #000;
 }
 
+body > header{
+	height: 70px;
+	background: #4E97D1;
+	padding: 0 16px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 body > footer{
-	background: #000000;
+	background: #4E97D1;
 	color: #ffffff;
 	height: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.logotipo{
+	display: flex;
+	align-items: center;
+}
+
+.logotipo img{
+	width: 40px;
+	height: 40px;
+}
+
+.logotipo h1 span{
+	color: #ffffff;
+}
+
+nav ul{
+	display: flex;
+	list-style-type: none;
+	gap: 16px;
+	margin: 0;
+	padding: 0;
+	align-items: center;
+}
+
+body > header nav a{
+	color: #747474;
+	text-decoration: none;
+	padding: 0 0 21px 0;
+}
+
+body > header nav a:hover{
+	color: #fdfdfd;
+	
+	border-bottom: 3px solid #ffffff; 
+}
+
+body > header nav a.active{
+	color: #6fa8dc;
+	border-bottom: 3px solid #6fa8dc;
+}
+
+body > main{
+	min-height: calc(100vh - 302px);
+	padding: 16px;
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+fieldset{
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 15px;
+	margin: 0 0 30px 0;
+}
+
+legend {
+	font-size: 1.2rem;
+	padding: 0 10px 5px 10px;
+}
+
+input[type=text], input[type=email], input[type=password], select, textarea{
+	padding: 5px 10px;
+	border-radius: 10px;
+	font-size: 18px;
+	margin: 3px 0 16px 0;
+	border: none;
+	background: #DDD;
+	color: #000;
+}
+
+input[type=submit], input[type=reset]{
+	border: 1px solid #4E97D1;
+	color: #FFF;
+	border-radius: 30px;
+	padding: 10px 20px;
+	background: #4E97D1;
+	font-size: 1.1rem;
+	margin: 16px 16px 16px 0;
+	cursor: pointer; 
+}
+
+input[type=submit]:hover, input[type=reset]:hover{
+	background: #4E97D1;
+}
+
+input[type=submit]:active, input[type=reset]:active{
+	background: #6fa8dc;
 }
