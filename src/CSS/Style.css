@@ -126,6 +126,7 @@ button {
 .modal {
 	position: absolute;
 	background: #000000e1;
+	color: #ffffff;
 	top: 0;
 	right: 0;
 	left: 0;
@@ -158,10 +159,12 @@ button {
 }
 
 .card-song{
-	width: 230px;
+	width: fit-content;
+	/*width: 230px;*/
 	position: relative;
-	/* height: fit-content; */
+	height: fit-content; 
 	background: #0a0a0a;
+	color:white;
 	border-radius: 20px;
 	padding: 16px;
 	align-self: baseline;
@@ -170,8 +173,9 @@ button {
 .card-menu{
 	display: none;
 	position: absolute;
-	background: #000000bd;
+	background:#3f3f3f8a;
 	backdrop-filter: blur(10px);
+	color:#000;
 	top: 0;
 	right: 0;
 	left: 0;
@@ -209,39 +213,9 @@ button {
 	margin: 16px 0 2px 0;
 } 
 
-/*
+
 
 .card-song main span{
 	color: #7b7b7b;
 }
 
-.card-song main span:nth-child(2){
-	background: #02bb2a;
-	padding: 3px 16px;
-	margin: 0 8px 0 0;
-	border-radius: 12px;
-	font-size: 14px;
-	color: #FFF;
-}
-
-.card-song footer{
-	display: flex;
-	justify-content: space-between;
-	margin: 26px 0 0 0;
-}
-
-.card-song footer div:nth-child(2){
-	text-align: right;
-}
-
-.card-song footer div p{
-	margin: 0;
-	font-size: 18px;
-}
-
-.card-song footer div span{
-	font-size: 14px;
-	color: #7b7b7b;
-}
-
-*/

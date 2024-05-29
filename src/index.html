@@ -31,11 +31,11 @@
     <div id="add-form-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Add Song</h2>
-			<form onsubmit="createSong(event)">
+			<form onsubmit="createCard(event)">
 				<label for="artist">Artista:</label>
 				<input type="text" name="artist" id="artist">
-				<label for="name">Nome:</label>
-				<input type="text" name="name" id="name">
+				<label for="title">Nome:</label>
+				<input type="text" name="title" id="title">
 				<label for="lyrics">Letra:</label>
 				<input type="text" name="lyrics" id="lyrics">
 				<button>Add Song</button>
@@ -45,11 +45,11 @@
     <div id="edit-form-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Edit Song</h2>
-			<form onsubmit="editSong(event)">
+			<form onsubmit="editCard(event)">
 				<label for="artist">Artista:</label>
 				<input type="text" name="artist" id="artist">
-				<label for="name">Nome:</label>
-				<input type="text" name="name" id="name">
+				<label for="title">Nome:</label>
+				<input type="text" name="title" id="title">
 				<label for="lyrics">Letra:</label>
 				<input type="text" name="lyrics" id="lyrics">
 				<button>Edit Song</button>
@@ -59,11 +59,11 @@
     <div id="add-api-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Search Song</h2>
-			<form onsubmit="searchSong(event)">
+			<form onsubmit="searchCard(event)">
 				<label for="artist">Artista:</label>
 				<input type="text" name="artist" id="artist">
-				<label for="name">Nome:</label>
-				<input type="text" name="name" id="name">
+				<label for="title">Nome:</label>
+				<input type="text" name="title" id="title">
 				<button>Search Song</button>
 			</form>
 		</main>
