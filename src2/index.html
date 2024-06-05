@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Lista de Tarefas</h1>
+        <!-- Botão para adicionar nova tarefa -->
+        <button id="addTaskBtn" onclick="">Adicionar Tarefa</button>
+    </header>
+
+    <main>
+        <!-- Lista de tarefas -->
+        <ul id="taskList">
+            <!-- As tarefas serão inseridas aqui dinamicamente pelo JavaScript -->
+        </ul>
+    </main>
+
+    <!-- Modal para adicionar/editar tarefa -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Tarefa</h2>
+            <!-- Formulário para adicionar/editar tarefa -->
+            <form id="taskForm">
+                <label for="taskTitle">Título:</label>
+                <input type="text" id="taskTitle" name="taskTitle" required>
+                <label for="taskDescription">Descrição:</label>
+                <textarea id="taskDescription" name="taskDescription"></textarea>
+                <button type="submit" id="saveTaskBtn">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

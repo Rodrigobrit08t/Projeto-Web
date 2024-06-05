@@ -19,7 +19,7 @@
                 <li><a href="./index.html" class="active">Home</a></li>
                 <li><a href="./contato.html">Contato</a></li>
                 <li><button onclick="openModal('add-form-modal')">Add Song</button></li>
-                <li><button onclick="openModal('edit-form-modal')">Search Song</button></li>
+                <li><button onclick="openModal('add-api-modal')">Search Song</button></li>
             </ul>
         </nav>
     </header>
@@ -46,6 +46,7 @@
 		<main>
 			<h2>Edit Song</h2>
 			<form onsubmit="editCard(event)">
+				<input type="hidden" name="old-artist" id="e-old-artist"> 
 				<label for="artist">Artista:</label>
 				<input type="text" name="artist" id="artist">
 				<label for="title">Nome:</label>
@@ -59,7 +60,7 @@
     <div id="add-api-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Search Song</h2>
-			<form onsubmit="searchCard(event)">
+			<form onsubmit="CreateApiCard(event)">
 				<label for="artist">Artista:</label>
 				<input type="text" name="artist" id="artist">
 				<label for="title">Nome:</label>

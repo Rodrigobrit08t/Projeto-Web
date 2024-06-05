@@ -1,13 +1,14 @@
 html, body{
     margin: 0;
     padding: 0;
-    background: #fdfdfd;
+    background: #f5f5f5;
     color: #000;
+	font-family: Arial, sans-serif;
 }
 
 body > header{
 	height: 70px;
-	background: #4E97D1;
+	background: #333;
 	padding: 0 16px;
 	display: flex;
 	align-items: center;
@@ -15,8 +16,8 @@ body > header{
 }
 
 body > footer{
-	background: #4E97D1;
-	color: #ffffff;
+	background: #333;
+	color: #fff;
 	height: 200px;
 	display: flex;
 	justify-content: center;
@@ -34,7 +35,7 @@ body > footer{
 }
 
 .logotipo h1 span{
-	color: #ffffff;
+	color: #4CAF50;
 }
 
 nav ul{
@@ -59,8 +60,8 @@ body > header nav a:hover{
 }
 
 body > header nav a.active{
-	color: #05447e;
-	border-bottom: 3px solid #05447e;
+	color: #4CAF50;
+	border-bottom: 3px solid #4CAF50;
 }
 
 body > main{
@@ -115,12 +116,16 @@ input[type=submit]:active, input[type=reset]:active{
 }
 
 button {
-	background: #FFF;
-	color: #000;
+	background: #4CAF50;
+	color: #fff;
 	padding: 10px 20px;
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
+}
+
+button:hover{
+	background-color: #45a049;
 }
 
 .modal {
@@ -159,7 +164,7 @@ button {
 }
 
 .card-song{
-	width: fit-content;
+	width: 250px;
 	/*width: 230px;*/
 	position: relative;
 	height: fit-content; 
@@ -168,6 +173,7 @@ button {
 	border-radius: 20px;
 	padding: 16px;
 	align-self: baseline;
+	overflow: hidden;
 }
 
 .card-menu{
@@ -209,8 +215,11 @@ button {
 } 
 
 .card-song main p{
-	font-size: 32px;
+	font-size: 16px;
 	margin: 16px 0 2px 0;
+	overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
 } 
 
 
