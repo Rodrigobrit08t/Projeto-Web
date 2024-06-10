@@ -172,28 +172,84 @@ const removeCard = (event) => {
 
 
 const openEditModal = (event) => {
-	const card = event.target.closest('.card-song');
-    if (!card) return; 
+	const card = event.target.closest('.card-song')
 
-    const editModal = document.getElementById('edit-form-modal');
-    if (!editModal.style.display || editModal.style.display === 'none') {
-        openModal('edit-form-modal');
-    }
+	const inputArtist = document.getElementById('artist-edit')
+	inputArtist.value = card.querySelector('header h2 span').innerText.replace(':', '')
 
-    const inputTitle = document.getElementById('e-title');
-    inputTitle.value = card.querySelector('header h1 span').innerText.replace(':', '');
+	const inputTitulo = document.getElementById('titulo-edit')
+	inputTitulo.value = card.querySelector('header h1 span').innerText
 
-    const inputArtist = document.getElementById('e-artist');
-    const inputOldArtist = document.getElementById('e-old-artist');
-    inputArtist.value = card.querySelector('header h2').innerText.replace(':', '');
-    inputOldArtist.value = inputArtist.value;
+	const inputLetra = document.getElementById('letra-edit')
+	inputLetra.value = card.querySelector('main p').dataset.valor
 
-    const inputLyrics = document.getElementById('e-lyrics');
-    inputLyrics.value = card.querySelector('main p').innerText;
+	openModal('edit-form-modal')
 }
 
 const editCard = (event) =>{
-	
+	event.preventDefault()
+	const formData = new FormData(event.target)
+	const stock = Object.fromEntries(formData)
+
+	const card = document.getElementById(song['e-artista'])
+	card.setAttribute('artist', song.artista)
+
+	updateCard({
+		artist,
+        title,
+        lyrics
+	})
+	closeModal(null, 'edit-form-modal')
+}
+
+
+let comments = [];
+
+function addComment() {
+    const commentText = document.getElementById("comment-text").value;
+    if (commentText.trim() !== "") {
+        const comment = {
+            id: generateId(),
+            text: commentText
+        };
+        comments.push(comment);
+        renderComments();
+        document.getElementById("comment-text").value = "";
+    }
+}
+
+function renderComments() {
+    const commentsList = document.getElementById("comments-list");
+    commentsList.innerHTML = "";
+    comments.forEach(comment => {
+        const commentElement = document.createElement("div");
+        commentElement.innerHTML = `
+            <p>${comment.text}</p>
+            <button onclick="deleteComment(${comment.id})">Excluir</button>
+            <button onclick="editComment(${comment.id})">Editar</button>
+        `;
+        commentsList.appendChild(commentElement);
+    });
+}
+
+function deleteComment(commentId) {
+    comments = comments.filter(comment => comment.id !== commentId);
+    renderComments();
+}
+
+function generateId() {
+    return Math.floor(Math.random() * Date.now());
+}
+
+window.onload = renderComments;
+
+function editComment(commentId) {
+    const newText = prompt("Editar comentário:", comments.find(comment => comment.id === commentId).text);
+    if (newText !== null) {
+        const index = comments.findIndex(comment => comment.id === commentId);
+        comments[index].text = newText;
+        renderComments();
+    }
 }
 
 

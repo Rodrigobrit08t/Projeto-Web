@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF Music</title>
+    <link rel="stylesheet" href="./CSS/Style.css">
+    <script src="./JS/Main.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logotipo">
+            <img src="./img/logo.svg" alt="logotipo">
+            <h1><span>IF</span> Music</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./contato.html">Contato</a></li>
+                <li><a href="./comentario.html" class="active">Comentários</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <h1>Comentários</h1>
+        
+        <div id="comment-form">
+            <textarea id="comment-text" placeholder="Digite seu comentário"></textarea>
+            <button onclick="addComment()">Adicionar Comentário</button>
+        </div>
+        
+        <div id="comments-list">
+            
+        </div>
+
+    </main>
+    <footer>
+        <p>Copyright 2024 © Rodrigo Costa</p>
+    </footer>
+</body>

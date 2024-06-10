@@ -18,6 +18,7 @@
             <ul>
                 <li><a href="./index.html" class="active">Home</a></li>
                 <li><a href="./contato.html">Contato</a></li>
+				<li><a href="./comentario.html">Comentários</a></li>
                 <li><button onclick="openModal('add-form-modal')">Add Song</button></li>
                 <li><button onclick="openModal('add-api-modal')">Search Song</button></li>
             </ul>
@@ -46,13 +47,12 @@
 		<main>
 			<h2>Edit Song</h2>
 			<form onsubmit="editCard(event)">
-				<input type="hidden" name="old-artist" id="e-old-artist"> 
 				<label for="artist">Artista:</label>
-				<input type="text" name="artist" id="artist">
+				<input type="text" name="artist" id="artist-edit">
 				<label for="title">Nome:</label>
-				<input type="text" name="title" id="title">
+				<input type="text" name="title" id="title-edit">
 				<label for="lyrics">Letra:</label>
-				<input type="text" name="lyrics" id="lyrics">
+				<input type="text" name="lyrics" id="lyrics-edit">
 				<button>Edit Song</button>
 			</form>
 		</main>
