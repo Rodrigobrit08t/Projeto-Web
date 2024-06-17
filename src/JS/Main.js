@@ -1,10 +1,12 @@
-const song = [{artist:"", title:"", lyrics:""}]
+const song = [{id:"", artist:"", title:"", lyrics:""}]
 
-function addCard({artist, title, lyrics}){
+
+function addCard({id, artist, title, lyrics}){
     const main = document.querySelector('body > main')
+    id = Date.now()
 
     main.innerHTML += `
-        <div class="card-song" id="${artist}" onmouseenter="cardEnter(event)" onmouseleave="cardLeave(event)">
+        <div class="card-song" id="${id}" onmouseenter="cardEnter(event)" onmouseleave="cardLeave(event)">
 			<header>
 				<h2><span>Artista: </span>${artist}</h2>
 				<h1><span>Título: </span>${title}</h1>
@@ -25,9 +27,9 @@ function addCard({artist, title, lyrics}){
 	})
 }
 
-function updateCard({artist, title, lyrics}){
-
-    const card = document.querySelector(`#${artist}`)
+function updateCard({id, artist, title, lyrics}){
+    
+    const card = document.querySelector(`#${id}`)
     
 	card.innerHTML = `
 			<header>
@@ -104,6 +106,7 @@ const createApiCard = async (event) =>{
     const { artist, title } = event.target.elements;
     const artistValue = artist.value;
     const titleValue = title.value;
+    const id = Date.now();
 
     const lyrics = await fetchLyrics(artistValue, titleValue);
 	
@@ -114,7 +117,7 @@ const createApiCard = async (event) =>{
     });
 
 	const cardHTML = `
-        <div class="card-song" id="${artistValue}">
+        <div class="card-song" id="${id}">
             <header>
                 <h2><span>Artista: </span>${artistValue}</h2>
                 <h1><span>Título: </span>${titleValue}</h1>
@@ -151,7 +154,7 @@ const renderCards = () => {
                 <p><strong>Letra:</strong> ${cardData.lyrics}</p>
             </div>
         `;
-        cardContainer.innerHTML += cardHTML; // Adiciona o HTML do card ao container
+        cardContainer.innerHTML += cardHTML; 
     });
 };
 
@@ -172,33 +175,50 @@ const removeCard = (event) => {
 
 
 const openEditModal = (event) => {
-	const card = event.target.closest('.card-song')
+    const card = event.target.closest('.card-song');
 
-	const inputArtist = document.getElementById('artist-edit')
-	inputArtist.value = card.querySelector('header h2 span').innerText.replace(':', '')
+    const editForm = document.getElementById('edit-form-modal');
+    editForm.dataset.cardId = card.id;
 
-	const inputTitulo = document.getElementById('titulo-edit')
-	inputTitulo.value = card.querySelector('header h1 span').innerText
+    const inputArtist = document.getElementById('artist-edit');
+    inputArtist.value = card.querySelector('header h2 span').innerText.replace('Artista: ', '');
 
-	const inputLetra = document.getElementById('letra-edit')
-	inputLetra.value = card.querySelector('main p').dataset.valor
+    const inputTitulo = document.getElementById('title-edit');
+    inputTitulo.value = card.querySelector('header h1 span').innerText.replace('Título: ', '');
 
-	openModal('edit-form-modal')
-}
+    const inputLetra = document.getElementById('lyrics-edit');
+    inputLetra.value = card.querySelector('main p').innerText;
+
+    openModal('edit-form-modal');
+};
+
+
 
 const editCard = (event) =>{
 	event.preventDefault()
 	const formData = new FormData(event.target)
-	const stock = Object.fromEntries(formData)
+	const updateCard = Object.fromEntries(formData)
 
-	const card = document.getElementById(song['e-artista'])
-	card.setAttribute('artist', song.artista)
 
-	updateCard({
-		artist,
-        title,
-        lyrics
-	})
+	const cardID = updateCard['id']
+    const card = document.getElementById(cardID)
+
+	if (card) {
+        const header = card.querySelector('header');
+        header.innerHTML = `
+            <h2><span>Artista: </span>${updatedCard.artist}</h2>
+            <h1><span>Título: </span>${updatedCard.title}</h1>
+        `;
+
+        const main = card.querySelector('main');
+        main.innerHTML = `
+            <h3><span>Letra:</span><br></h3>
+            <p>${updatedCard.lyrics}</p>
+        `;
+    } else {
+        console.error(`Card with ID ${cardId} not found.`);
+    }
+
 	closeModal(null, 'edit-form-modal')
 }
 
