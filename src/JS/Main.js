@@ -70,10 +70,37 @@ const closeModal = (event, id) => {
 	}
 }
 
+const loadCards = () => {
+    cardDataArray.forEach(cardData => {
+        const cardHTML = `
+            <div class="card-song" id="${cardData.id}">
+                <header>
+                    <h2><span>Artista: </span>${cardData.artist}</h2>
+                    <h1><span>Título: </span>${cardData.title}</h1>
+                </header>
+                <main>
+                    <h3><span>Letra:</span><br></h3>
+                    <p>${cardData.lyrics}</p>
+                </main>
+                <div class="card-menu">
+                    <span onclick="openModal('edit-form-modal')">Editar</span>
+                    <span onclick="removeCard(event)">Excluir</span>
+                </div>
+            </div>
+        `;
 
+        const main = document.querySelector('main');
+        main.innerHTML += cardHTML;
+    });
+};
+
+window.onload = loadCards;
+
+/*
 function loadCards(){
 	song.map(stock => addCard(stock))
 }
+*/
 
 const createCard = (event) =>{
 	event.preventDefault()
@@ -101,46 +128,56 @@ const fetchLyrics = async (artist, title) => {
     }
 };
 
-const createApiCard = async (event) =>{
-	event.preventDefault();
+
+const createApiCard = async (event) => {
+    event.preventDefault();
     const { artist, title } = event.target.elements;
-    const artistValue = artist.value;
-    const titleValue = title.value;
-    const id = Date.now();
+    const artistValue = artist.value.trim();
+    const titleValue = title.value.trim();
 
-    const lyrics = await fetchLyrics(artistValue, titleValue);
-	
-	cardDataArray.push({
-        artist: artistValue,
-        title: titleValue,
-        lyrics: lyrics
-    });
+    if (!artistValue || !titleValue) {
+        alert('Por favor, preencha o artista e o título da música.');
+        return;
+    }
 
-	const cardHTML = `
-        <div class="card-song" id="${id}">
-            <header>
-                <h2><span>Artista: </span>${artistValue}</h2>
-                <h1><span>Título: </span>${titleValue}</h1>
-            </header>
-            <main>
-                <h3><span>Letra:</span><br></h3>
-                <p>${lyrics}</p>
-            </main>
-            <div class="card-menu">
-                <span>Editar</span>
-                <span onclick="removeCard(event)">Excluir</span>
+    try {
+        const lyrics = await fetchLyrics(artistValue, titleValue);
+        const id = Date.now();
+
+        cardDataArray.push({
+            id: id,
+            artist: artistValue,
+            title: titleValue,
+            lyrics: lyrics
+        });
+
+        const cardHTML = `
+            <div class="card-song" id="${id}">
+                <header>
+                    <h2><span>Artista: </span>${artistValue}</h2>
+                    <h1><span>Título: </span>${titleValue}</h1>
+                </header>
+                <main>
+                    <h3><span>Letra:</span><br></h3>
+                    <p>${lyrics}</p>
+                </main>
+                <div class="card-menu">
+                    <span onclick="openModal('edit-form-modal')">Editar</span>
+                    <span onclick="removeCard(event)">Excluir</span>
+                </div>
             </div>
-        </div>
-    `;
+        `;
 
-	document.body.querySelector('main').innerHTML += cardHTML;
+        const main = document.querySelector('main');
+        main.innerHTML += cardHTML;
 
-	artist.value = '';
-    title.value = '';
-	
-	event.target.reset()
-	closeModal(null, 'add-api-modal')
-}
+        event.target.reset();
+        closeModal(null, 'add-api-modal');
+    } catch (error) {
+        console.error('Erro ao criar card:', error);
+        alert('Ocorreu um erro ao buscar a letra da música. Por favor, tente novamente.');
+    }
+};
 
 const renderCards = () => {
     const cardContainer = document.getElementById('card-container');
