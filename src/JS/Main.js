@@ -21,6 +21,7 @@ function addCard({id, artist, title, lyrics}){
 			</div>
 		</div>
     `
+    console.log(id)
 	const allEdit = main.querySelectorAll('.card-song .card-menu span:first-child')
 	allEdit.forEach(edit => {
 		edit.addEventListener('click', openEditModal)
@@ -96,12 +97,6 @@ const loadCards = () => {
 
 window.onload = loadCards;
 
-/*
-function loadCards(){
-	song.map(stock => addCard(stock))
-}
-*/
-
 const createCard = (event) =>{
 	event.preventDefault()
 	const formData = new FormData(event.target)
@@ -116,7 +111,7 @@ const cardDataArray = [];
 
 const fetchLyrics = async (artist, title) => {
     try {
-        const response = await fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`);
+        const response = await fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`);
         if (!response.ok) {
             throw new Error('Erro ao buscar a letra da música');
         }
@@ -129,11 +124,10 @@ const fetchLyrics = async (artist, title) => {
 };
 
 
-const createApiCard = async (event) => {
+const CreateApiCard = async (event) => {
     event.preventDefault();
-    const { artist, title } = event.target.elements;
-    const artistValue = artist.value.trim();
-    const titleValue = title.value.trim();
+    const artistValue = document.getElementById('api-artist').value.trim();
+    const titleValue = document.getElementById('api-title').value.trim();
 
     if (!artistValue || !titleValue) {
         alert('Por favor, preencha o artista e o título da música.');
@@ -144,32 +138,15 @@ const createApiCard = async (event) => {
         const lyrics = await fetchLyrics(artistValue, titleValue);
         const id = Date.now();
 
-        cardDataArray.push({
+        const cardData = {
             id: id,
             artist: artistValue,
             title: titleValue,
             lyrics: lyrics
-        });
+        };
 
-        const cardHTML = `
-            <div class="card-song" id="${id}">
-                <header>
-                    <h2><span>Artista: </span>${artistValue}</h2>
-                    <h1><span>Título: </span>${titleValue}</h1>
-                </header>
-                <main>
-                    <h3><span>Letra:</span><br></h3>
-                    <p>${lyrics}</p>
-                </main>
-                <div class="card-menu">
-                    <span onclick="openModal('edit-form-modal')">Editar</span>
-                    <span onclick="removeCard(event)">Excluir</span>
-                </div>
-            </div>
-        `;
-
-        const main = document.querySelector('main');
-        main.innerHTML += cardHTML;
+        cardDataArray.push(cardData);
+        addCard(cardData);
 
         event.target.reset();
         closeModal(null, 'add-api-modal');
@@ -227,9 +204,7 @@ const openEditModal = (event) => {
     inputLetra.value = card.querySelector('main p').innerText;
 
     openModal('edit-form-modal');
-};
-
-
+};  
 
 const editCard = (event) =>{
 	event.preventDefault()
