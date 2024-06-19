@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IF Music</title>
     <link rel="stylesheet" href="./CSS/Style.css">
+    <script src="./JS/Main.js"></script>
 </head>
 <body>
     <header>
@@ -32,9 +33,11 @@
 				<input type="text" name="sobrenome" id="sobrenome">
 				<label for="email">Email:</label>
 				<input type="email" name="email" id="email">
+                <button type="button" onclick="validateEmail()">Validar Email</button>
+                <p id="validation-result"></p>
                 <br><br>
 			    <label for="mensagem">Mensagem:</label><br>
-			    <textarea name="comentario" id="comentario" rows="8" cols="50"></textarea><br>
+			    <textarea name="mensagem" id="mensagem" rows="8" cols="50"></textarea><br>
 			    <input type="submit" value="Enviar">
             </fieldset>
         </form>

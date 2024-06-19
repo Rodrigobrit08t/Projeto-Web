@@ -2,34 +2,35 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IF Music</title>
-    <link rel="stylesheet" href="./CSS/Style.css">
-    <script src="./JS/Main.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>IF Music</title>
+	<link rel="stylesheet" href="./CSS/Style.css">
+	<script src="./JS/Main.js"></script>
 </head>
+
 <body onload="loadCards()">
-    <header>
-        <div class="logotipo">
-            <img src="./img/logo.svg" alt="logotipo">
-            <h1><span>IF</span> Music</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="./index.html" class="active">Home</a></li>
-                <li><a href="./contato.html">Contato</a></li>
+	<header>
+		<div class="logotipo">
+			<img src="./img/logo.svg" alt="logotipo">
+			<h1><span>IF</span> Music</h1>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="./index.html" class="active">Home</a></li>
+				<li><a href="./contato.html">Contato</a></li>
 				<li><a href="./comentario.html">Comentários</a></li>
-                <li><button onclick="openModal('add-form-modal')">Add Song</button></li>
-                <li><button onclick="openModal('add-api-modal')">Search Song</button></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-    </main>
-    <footer>
-        <p>Copyright 2024 © Rodrigo Costa</p>
-    </footer>
-    <div id="add-form-modal" class="modal" onclick="closeModal(event)">
+				<li><button onclick="openModal('add-form-modal')">Add Song</button></li>
+				<li><button onclick="openModal('add-api-modal')">Search Song</button></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+	</main>
+	<footer>
+		<p>Copyright 2024 © Rodrigo Costa</p>
+	</footer>
+	<div id="add-form-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Add Song</h2>
 			<form onsubmit="createCard(event)">
@@ -43,11 +44,11 @@
 			</form>
 		</main>
 	</div>
-    <div id="edit-form-modal" class="modal" onclick="closeModal(event)">
+	<div id="edit-form-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Edit Song</h2>
 			<form onsubmit="editCard(event)">
-				<input type="hidden" name="e-id" id="e-id">
+				<input type="hidden" name="id" id="e-id">
 				<label for="artist">Artista:</label>
 				<input type="text" name="artist" id="artist-edit">
 				<label for="title">Nome:</label>
@@ -58,15 +59,15 @@
 			</form>
 		</main>
 	</div>
-    <div id="add-api-modal" class="modal" onclick="closeModal(event)">
+	<div id="add-api-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Search Song</h2>
 			<form onsubmit="CreateApiCard(event)">
 				<label for="api-artist">Artista:</label>
-            	<input type="text" name="artist" id="api-artist">
-            	<label for="api-title">Nome:</label>
-            	<input type="text" name="title" id="api-title">
-            	<button type="submit">Search Song</button>
+				<input type="text" name="artist" id="api-artist">
+				<label for="api-title">Nome:</label>
+				<input type="text" name="title" id="api-title">
+				<button type="submit">Search Song</button>
 			</form>
 		</main>
 	</div>

@@ -29,7 +29,6 @@ function addCard({id, artist, title, lyrics}){
 }
 
 function updateCard({id, artist, title, lyrics}){
-    
     const card = document.querySelector(`#${id}`)
     
 	card.innerHTML = `
@@ -191,8 +190,8 @@ const removeCard = (event) => {
 const openEditModal = (event) => {
     const card = event.target.closest('.card-song');
 
-    const editForm = document.getElementById('edit-form-modal');
-    editForm.dataset.cardId = card.id;
+    const editForm = document.querySelector('#edit-form-modal form');
+    editForm.dataset.cardId = card.id;  
 
     const inputArtist = document.getElementById('artist-edit');
     inputArtist.value = card.querySelector('header h2 span').innerText.replace('Artista: ', '');
@@ -207,15 +206,14 @@ const openEditModal = (event) => {
 };  
 
 const editCard = (event) =>{
-	event.preventDefault()
-	const formData = new FormData(event.target)
-	const updateCard = Object.fromEntries(formData)
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const updatedCard = Object.fromEntries(formData);
 
+    const cardID = event.target.dataset.cardId;  
+    const card = document.getElementById(cardID);
 
-	const cardID = updateCard['id']
-    const card = document.getElementById(cardID)
-
-	if (card) {
+    if (card) {
         const header = card.querySelector('header');
         header.innerHTML = `
             <h2><span>Artista: </span>${updatedCard.artist}</h2>
@@ -228,10 +226,10 @@ const editCard = (event) =>{
             <p>${updatedCard.lyrics}</p>
         `;
     } else {
-        console.error(`Card with ID ${cardId} not found.`);
+        console.error(`Card with ID ${cardID} not found.`);
     }
 
-	closeModal(null, 'edit-form-modal')
+    closeModal(null, 'edit-form-modal');
 }
 
 
@@ -284,5 +282,26 @@ function editComment(commentId) {
     }
 }
 
+async function validateEmail() {
+    const email = document.getElementById('email').value;
+    const apiKey = 'e12ac9a1eff4477b8cc5780a732f4f89';
+    const url = `https://emailvalidation.abstractapi.com/v1/?api_key=${apiKey}&email=${email}`;
 
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const validationResult = document.getElementById('validation-result');
+        if (data.is_valid_format.value && data.is_smtp_valid.value) {
+            validationResult.innerText = 'Email válido!';
+            validationResult.style.color = 'green';
+        } else {
+            validationResult.innerText = 'Email inválido!';
+            validationResult.style.color = 'red';
+        }
+    } catch (error) {
+        console.error('Erro ao validar o email:', error);
+        document.getElementById('validation-result').innerText = 'Erro ao validar o email. Tente novamente mais tarde.';
+    }
+}
 
